@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 
+import { DnsHelpNotice } from "@/components/DnsHelpNotice";
 import { Layout } from "@/components/Layout";
 import { uploadFiles } from "@/services/api";
 
@@ -40,6 +41,7 @@ export default function UploadPage() {
             {busy ? "Uploading..." : "Upload and Process"}
           </button>
           {message ? <p>{message}</p> : null}
+          <DnsHelpNotice errorMessage={message} />
         </form>
       </section>
     </Layout>

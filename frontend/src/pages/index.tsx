@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { DocumentRow } from "@/components/DocumentRow";
+import { DnsHelpNotice } from "@/components/DnsHelpNotice";
 import { Layout } from "@/components/Layout";
 import { deleteDocument, listDocuments, retryJob } from "@/services/api";
 import { DocumentItem } from "@/services/types";
@@ -87,6 +88,7 @@ export default function DashboardPage() {
         </div>
 
         {error ? <p className="error-text">{error}</p> : null}
+        <DnsHelpNotice errorMessage={error} />
         {success ? <p className="success-text">{success}</p> : null}
 
         <table className="doc-table">

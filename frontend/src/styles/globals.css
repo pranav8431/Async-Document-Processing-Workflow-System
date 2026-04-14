@@ -321,6 +321,30 @@ button:disabled {
   color: var(--muted);
 }
 
+.dns-help-notice {
+  margin: 10px 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #fbbf24;
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.dns-help-notice p {
+  margin: 0 0 8px;
+}
+
+.dns-help-notice ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.dns-help-notice code {
+  background: rgba(120, 53, 15, 0.08);
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
 .job-live-grid {
   margin-top: 18px;
   display: grid;

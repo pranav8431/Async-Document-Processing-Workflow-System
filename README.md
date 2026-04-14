@@ -213,7 +213,7 @@ npm run dev
 - JSON/CSV export actions
 
 ## Submission Artifacts
-- Demo video: add your 3-5 minute walkthrough link here.
+- Demo video: https://www.loom.com/share/c9bae7f209f84a35925b95d0bb236b57
 - Sample test files: `samples/input/invoice_sample.txt`, `samples/input/contract_sample.txt`
 - Sample exported outputs: `samples/output/sample_export.json`, `samples/output/sample_export.csv`
 
@@ -243,3 +243,19 @@ npm run dev
 ## Notes
 - Processing is never done in the API request cycle.
 - All progress updates are emitted by Celery worker and consumed in real-time by frontend through backend WebSocket.
+
+## Troubleshooting
+
+### Vercel frontend shows `Failed to fetch` with Railway API
+
+If requests to `https://<service>.up.railway.app/api/...` fail in the browser but `curl` works from terminal, the issue is usually browser DNS resolution.
+
+For Brave:
+
+1. Open `brave://settings/security`.
+2. Enable `Use secure DNS` and select `Cloudflare (1.1.1.1)` or `Google (8.8.8.8)`.
+3. Restart Brave.
+4. Open `brave://net-internals/#dns` and click `Clear host cache`.
+5. Open `brave://net-internals/#sockets` and click `Flush socket pools`.
+
+After this, retry the frontend API calls.

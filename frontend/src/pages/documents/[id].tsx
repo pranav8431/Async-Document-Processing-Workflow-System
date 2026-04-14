@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
+import { DnsHelpNotice } from "@/components/DnsHelpNotice";
 import { Layout } from "@/components/Layout";
 import { LiveEventLog, ProcessingTimeline } from "@/components/LiveEventLog";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -109,6 +110,7 @@ export default function DocumentDetailPage() {
     <Layout title="Document Detail">
       <section className="panel narrow">
         {error ? <p className="error-text">{error}</p> : null}
+        <DnsHelpNotice errorMessage={error} />
         {document ? (
           <>
             <p><strong>Filename:</strong> {document.filename}</p>
