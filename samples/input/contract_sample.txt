@@ -1,0 +1,5 @@
+Service Agreement Draft
+Client: Acme Manufacturing
+Effective Date: 2026-04-10
+Scope: Quarterly maintenance and reporting
+Term: 12 months

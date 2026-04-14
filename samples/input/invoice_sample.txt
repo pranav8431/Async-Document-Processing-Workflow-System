@@ -1,0 +1,5 @@
+Invoice #INV-2026-0413
+Vendor: Northwind Supplies
+Date: 2026-04-12
+Total: 1240.00 USD
+Items: Monitor, Keyboard, Mouse

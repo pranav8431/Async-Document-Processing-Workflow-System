@@ -1,0 +1,74 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: docflow-postgres
+    environment:
+      POSTGRES_DB: docflow
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: docflow-redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: docflow-backend
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      APP_NAME: Async Document Processing Workflow
+      API_PREFIX: /api
+      CORS_ORIGINS: http://localhost:3000
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@postgres:5432/docflow
+      REDIS_URL: redis://redis:6379/0
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+    ports:
+      - "8000:8000"
+
+  celery-worker:
+    build:
+      context: ./backend
+    container_name: docflow-celery
+    depends_on:
+      - backend
+    environment:
+      APP_NAME: Async Document Processing Workflow
+      API_PREFIX: /api
+      CORS_ORIGINS: http://localhost:3000
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@postgres:5432/docflow
+      REDIS_URL: redis://redis:6379/0
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+    command: celery -A app.core.celery_app.celery_app worker --loglevel=info
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: docflow-frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
+  backend_uploads:

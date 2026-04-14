@@ -1,0 +1,10 @@
+{
+  "document_id": "7a9fdab1-6a9d-4de5-8cf5-c59b3ea57f81",
+  "filename": "invoice_sample.txt",
+  "status": "completed",
+  "title": "Invoice Sample",
+  "category": "Finance",
+  "summary": "Auto-generated summary for invoice_sample.txt.",
+  "keywords": ["invoice", "sample"],
+  "finalized": true
+}
