@@ -25,6 +25,9 @@ export function DnsHelpNotice({ errorMessage }: DnsHelpNoticeProps) {
         <li>Enable Secure DNS and select <code>1.1.1.1</code> or <code>8.8.8.8</code>.</li>
         <li>Reload the page and try again.</li>
       </ol>
+      <p>
+        Refer to: <a href="https://www.loom.com/share/c9bae7f209f84a35925b95d0bb236b57" target="_blank" rel="noreferrer">Loom Demo</a>
+      </p>
     </div>
   );
 }
