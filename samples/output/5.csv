@@ -1,0 +1,2 @@
+document_id,filename,status,title,category,summary,keywords,file_size,processed_at,finalized
+46da1c32-b09b-489e-8bb9-4e5e9dc5d5d2,invoice_sample.txt,completed,Invoice #Inv-2026-0413 editing check,Finance,Invoice #INV-2026-0413 Vendor: Northwind Supplies Date: 2026-04-12,invoice;inv-;vendor;northwind;supplies;date,118,2026-04-14T05:36:07.936742+00:00,False
